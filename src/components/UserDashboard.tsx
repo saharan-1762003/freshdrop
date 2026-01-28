@@ -16,6 +16,7 @@ async function UserDashboard() {
     price: item.price,
     unit: item.unit,
     image: item.image,
+    
   }))
   return (
     <>
