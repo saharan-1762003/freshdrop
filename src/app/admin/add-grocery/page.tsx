@@ -18,7 +18,7 @@ const categories = [
     "Baby & Pet Care"
 ]
 
-const units = [
+const units =  [
     "kg", "g", "liter", "ml", "piece", "pack"
 ]
 function AddGrocery() {
