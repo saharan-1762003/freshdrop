@@ -33,20 +33,20 @@ function EditRoleMobile() {
     }
   }
 
-// useEffect(()=>{
+useEffect(()=>{
 
-// const checkForAdmin=async ()=>{
-//   try {
-//     const result=await axios.get("/api/check-for-admin")
-//     if(result.data.adminExist){
-//       setRoles(prev=>prev.filter(r=>r.id!=="admin"))
-//     }
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
-// checkForAdmin()
-// },[])
+const checkForAdmin=async ()=>{
+  try {
+    const result=await axios.get("/api/check-for-admin")
+    if(result.data.adminExist){
+      setRoles(prev=>prev.filter(r=>r.id!=="admin"))
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+checkForAdmin()
+},[])
 
   return (
     <div className='flex flex-col items-center min-h-screen p-6 w-full'>

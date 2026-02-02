@@ -1,6 +1,6 @@
 "use client";
 import AdminOrderCard from "@/components/AdminOrderCard";
-// import { getSocket } from "@/lib/socket";
+import { getSocket } from "@/lib/socket";
 
 import { IUser } from "@/models/user.model";
 import axios from "axios";
@@ -55,23 +55,23 @@ function ManageOrders() {
     getOrders();
   }, []);
 
-//   useEffect(() => {
-//     const socket = getSocket();
-//     socket?.on("new-order", (newOrder) => {
-//       setOrders((prev) => [newOrder, ...prev!]);
-//     });
-//     socket.on("order-assigned", ({ orderId, assignedDeliveryBoy }) => {
-//       setOrders((prev) =>
-//         prev?.map((o) =>
-//           o._id == orderId ? { ...o, assignedDeliveryBoy } : o,
-//         ),
-//       );
-//     });
-//     return () => {
-//       socket.off("new-order");
-//       socket.off("order-assigned");
-//     };
-//   }, []);
+  useEffect(() => {
+    const socket = getSocket();
+    socket?.on("new-order", (newOrder) => {
+      setOrders((prev) => [newOrder, ...prev!]);
+    });
+    socket.on("order-assigned", ({ orderId, assignedDeliveryBoy }) => {
+      setOrders((prev) =>
+        prev?.map((o) =>
+          o._id == orderId ? { ...o, assignedDeliveryBoy } : o,
+        ),
+      );
+    });
+    return () => {
+      socket.off("new-order");
+      socket.off("order-assigned");
+    };
+  }, []);
   return (
     <div className="min-h-screen bg-gray-50 w-full">
       <div className="fixed top-0 left-0 w-full backdrop-blur-lg bg-white/70 shadow-sm border-b z-50">

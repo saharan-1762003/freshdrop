@@ -12,7 +12,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import Image from "next/image";
-// import { getSocket } from "@/lib/socket";
+import { getSocket } from "@/lib/socket";
 import { IUser } from "@/models/user.model";
 import { useRouter } from "next/navigation";
 interface IOrder {
@@ -64,15 +64,15 @@ function UserOrderCard({ order }: { order: IOrder }) {
     }
   };
 
-//   useEffect((): any => {
-//     const socket = getSocket();
-//     socket.on("order-status-update", (data) => {
-//       if (data.orderId.toString() == order?._id!.toString()) {
-//         setStatus(data.status);
-//       }
-//     });
-//     return () => socket.off("order-status-update");
-//   }, []);
+  useEffect((): any => {
+    const socket = getSocket();
+    socket.on("order-status-update", (data) => {
+      if (data.orderId.toString() == order?._id!.toString()) {
+        setStatus(data.status);
+      }
+    });
+    return () => socket.off("order-status-update");
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}

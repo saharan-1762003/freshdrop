@@ -17,7 +17,7 @@ import Image from "next/image";
 import axios from "axios";
 
 import { IUser } from "@/models/user.model";
-// import { getSocket } from "@/lib/socket";
+import { getSocket } from "@/lib/socket";
 interface IOrder {
   _id?: string;
   user: string;
@@ -68,18 +68,18 @@ function AdminOrderCard({ order }: { order: IOrder }) {
     }
   };
 
-//   useEffect(() => {
-//     setStatus(order.status);
-//   }, [order]);
-//   useEffect((): any => {
-//     const socket = getSocket();
-//     socket.on("order-status-update", (data) => {
-//       if (data.orderId.toString() == order?._id!.toString()) {
-//         setStatus(data.status);
-//       }
-//     });
-//     return () => socket.off("order-status-update");
-//   }, []);
+  useEffect(() => {
+    setStatus(order.status);
+  }, [order]);
+  useEffect((): any => {
+    const socket = getSocket();
+    socket.on("order-status-update", (data) => {
+      if (data.orderId.toString() == order?._id!.toString()) {
+        setStatus(data.status);
+      }
+    });
+    return () => socket.off("order-status-update");
+  }, []);
   return (
     <motion.div
       key={order._id?.toString()}
@@ -134,7 +134,7 @@ function AdminOrderCard({ order }: { order: IOrder }) {
             </span>
           </p>
 
-          {/* {order.assignedDeliveryBoy && (
+          {order.assignedDeliveryBoy && (
             <div className="mt-4 bg-blue-50 border border-blue-200 rounded-xl p-4 flex items-center justify-between">
               <div className="flex items-center gap-3 text-sm text-gray-700">
                 <UserCheck className="text-blue-600" size={18} />
@@ -156,7 +156,7 @@ function AdminOrderCard({ order }: { order: IOrder }) {
               </a>
             </div>
           )}
-        </div> */}
+        </div>
 
         <div className="flex flex-col items-start md:items-end gap-2">
           <span
