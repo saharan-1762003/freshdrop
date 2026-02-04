@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import {
   ArrowLeft,
   Building,
@@ -24,9 +24,9 @@ import axios from "axios";
 
 import dynamic from "next/dynamic";
 
-// const CheckOutMap = dynamic(() => import("@/components/CheckoutMap"), {
-//   ssr: false,
-// });
+const CheckOutMap = dynamic(() => import("@/components/CheckoutMap"), {
+  ssr: false,
+});
 
 function Checkout() {
   const router = useRouter();
@@ -69,7 +69,7 @@ function Checkout() {
 
   const handleSearchQuery = async () => {
     setSearchLoading(true);
-    // const { OpenStreetMapProvider } = await import("leaflet-geosearch");
+    const { OpenStreetMapProvider } = await import("leaflet-geosearch");
     const provider = new OpenStreetMapProvider();
     const results = await provider.search({ query: searchQuery });
     if (results) {

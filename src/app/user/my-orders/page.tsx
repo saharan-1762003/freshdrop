@@ -3,10 +3,10 @@
 import axios from "axios";
 import { ArrowLeft, PackageSearch } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import UserOrderCard from "@/components/UserOrderCard";
-// import { getSocket } from "@/lib/socket";
+import { getSocket } from "@/lib/socket";
 
 import { IUser } from "@/models/user.model";
 interface IOrder {
@@ -58,20 +58,20 @@ function MyOrder() {
     getMyOrders();
   }, []);
 
-//   useEffect(() => {
-//     const socket = getSocket();
-//     socket.on("order-assigned", ({ orderId, assignedDeliveryBoy }) => {
-//       setOrders((prev) =>
-//         prev?.map((o) =>
-//           o._id == orderId ? { ...o, assignedDeliveryBoy } : o,
-//         ),
-//       );
-//     });
+  useEffect(() => {
+    const socket = getSocket();
+    socket.on("order-assigned", ({ orderId, assignedDeliveryBoy }) => {
+      setOrders((prev) =>
+        prev?.map((o) =>
+          o._id == orderId ? { ...o, assignedDeliveryBoy } : o,
+        ),
+      );
+    });
 
-//     return () => {
-//       socket.off("order-assigned");
-//     };
-//   }, []);
+    return () => {
+      socket.off("order-assigned");
+    };
+  }, []);
 
   if (loading) {
     return (
