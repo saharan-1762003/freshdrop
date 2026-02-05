@@ -54,7 +54,7 @@ if (res?.error) {
         duration:0.6
       }}
        className='text-4xl font-extrabold text-green-700 mb-2'>Welcome Back</motion.h1>
-       <p className='text-gray-600 mb-8 flex items-center'>Login To Snapcart <Leaf className='w-5 h-5 text-green-600'/></p>
+       <p className='text-gray-600 mb-8 flex items-center'>Login To FreshDrop <Leaf className='w-5 h-5 text-green-600'/></p>
        <motion.form
       onSubmit={handleLogin}
        initial={{
@@ -106,7 +106,7 @@ if (res?.error) {
     <span className='flex-1 h-px bg-gray-200'></span>
 </div>
 
-<div className='w-full flex items-center justify-center gap-3 border border-gray-300 hover:bg-gray-50 py-3 rounded-xl text-gray-700 font-medium transition-all duration-200' onClick={()=>signIn("google",{callbackUrl:"/"})}>
+<div className='w-full cursor-pointer flex items-center justify-center gap-3 border border-gray-300 hover:bg-gray-50 py-3 rounded-xl text-gray-700 font-medium transition-all duration-200' onClick={()=>signIn("google",{callbackUrl:"/"})}>
     <Image src={googleImage} width={20} height={20} alt='google'/>
     Continue with Google
 </div>
