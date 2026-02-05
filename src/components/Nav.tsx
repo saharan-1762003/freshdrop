@@ -152,7 +152,7 @@ function Nav({ user }: { user: IUser }) {
         href={"/"}
         className="text-white font-extrabold text-2xl sm:text-3xl tracking-wide hover:scale-105 transition-transform"
       >
-        SwiftKart
+        FreshDrop
       </Link>
       {user.role == "user" && (
         <form

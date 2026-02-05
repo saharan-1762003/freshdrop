@@ -60,7 +60,7 @@ function Footer() {
               <Phone size={16} /> +91 0000000000
             </li>
             <li className="flex items-center gap-2">
-              <Mail size={16} /> support@swiftkart.in
+              <Mail size={16} /> support@freshdrop.in
             </li>
           </ul>
           {/* 🌐 Social Links */}
@@ -80,7 +80,7 @@ function Footer() {
 
       <div className="text-center py-4 text-sm text-green-100 bg-green-800/40">
         © {new Date().getFullYear()}{" "}
-        <span className="font-semibold">SwiftKart</span>. All rights reserved.
+        <span className="font-semibold">FreshDrop</span>. All rights reserved.
       </div>
     </motion.div>
   );
